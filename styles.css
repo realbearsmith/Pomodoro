@@ -1,114 +1,28 @@
 :root {
     --gradient-light: linear-gradient(145deg,
-            #FF9933 0%,
-            #FFA038 4%,
-            #FFAA44 8%,
-            #FFB24D 12%,
-            #FFBB55 16%,
-            #FFC25E 20%,
-            #FFCA66 24%,
-            #FFD270 28%,
-            #FFCA66 32%,
-            #FFC25E 36%,
-            #FFBB55 40%,
-            #FFB24D 44%,
-            #FFAA44 48%,
-            #FFA038 52%,
-            #FF9933 56%,
-            #FFA038 60%,
-            #FFAA44 64%,
-            #FFB24D 68%,
-            #FFBB55 72%,
-            #FFC25E 76%,
-            #FFCA66 80%,
-            #FFD270 84%,
-            #FFCA66 88%,
-            #FFC25E 92%,
-            #FFBB55 96%,
-            #FFB24D 100%);
+            #FF6B00 0%,
+            #FF8800 25%,
+            #FFA500 50%,
+            #FF8800 75%,
+            #FF6B00 100%);
     --gradient-dark: linear-gradient(145deg,
             #001223 0%,
-            #001428 2%,
-            #001630 4%,
-            #001833 6%,
-            #001A38 8%,
-            #001C3D 10%,
-            #001E42 12%,
-            #002047 14%,
-            #00224C 16%,
-            #002452 18%,
-            #002657 20%,
-            #002857 22%,
-            #002A5C 24%,
-            #002C61 26%,
-            #002E66 28%,
-            #00306B 30%,
-            #003270 32%,
-            #003575 34%,
-            #003270 36%,
-            #00306B 38%,
-            #002E66 40%,
-            #002C61 42%,
-            #002A5C 44%,
-            #002857 46%,
-            #002657 48%,
-            #002452 50%,
-            #00224C 52%,
-            #002047 54%,
-            #001E42 56%,
-            #001C3D 58%,
-            #001A38 60%,
-            #001833 62%,
-            #001630 64%,
-            #001428 66%,
-            #001223 68%,
-            #001428 70%,
-            #001630 72%,
-            #001833 74%,
-            #001A38 76%,
-            #001C3D 78%,
-            #001E42 80%,
-            #002047 82%,
-            #00224C 84%,
-            #002452 86%,
-            #002657 88%,
-            #002857 90%,
-            #002A5C 92%,
-            #002C61 94%,
-            #002E66 96%,
-            #00306B 98%,
-            #003270 100%);
+            #001E42 25%,
+            #002857 50%,
+            #001E42 75%,
+            #001223 100%);
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
+    background: var(--gradient-dark);
+    font-family: 'Inter', sans-serif;
     position: relative;
     overflow: hidden;
-}
-
-.animated-background {
-    position: fixed;
-    top: -300%;
-    left: -300%;
-    width: 700%;
-    height: 700%;
-    background: var(--gradient-dark);
-    z-index: -2;
-    animation: gradientRotate 60s linear infinite;
-    background-size: 200% 200%;
-    transform-origin: center center;
-    animation-play-state: paused;
-    background-blend-mode: normal;
-    filter: contrast(1.02) url(#noise);
-}
-
-.light-theme .animated-background {
-    background: var(--gradient-light);
 }
 
 .noise-overlay {
@@ -119,9 +33,23 @@ body {
     height: 100%;
     opacity: 0.12;
     z-index: -1;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E");
     mix-blend-mode: overlay;
     pointer-events: none;
+}
+
+.animated-background {
+    position: fixed;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: var(--gradient-dark);
+    z-index: -2;
+    animation: gradientRotate 30s linear infinite;
+    background-size: 200% 200%;
+    transform-origin: center center;
+    animation-play-state: paused;
 }
 
 @keyframes gradientRotate {
@@ -136,10 +64,29 @@ body {
 
 .container {
     text-align: center;
-    padding: 3rem;
+    padding: 1.5rem;
     max-width: 400px;
-    width: 90%;
-    margin-top: 2rem;
+    width: 95%;
+    margin-top: 1rem;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#session-type {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 800;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .timer-container {
@@ -182,14 +129,6 @@ body {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     font-family: 'Inter', sans-serif;
     letter-spacing: -2px;
-}
-
-h1 {
-    font-weight: 800;
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.95);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .controls,
@@ -245,24 +184,6 @@ h1 {
     opacity: 0.5;
 }
 
-#session-type {
-    font-size: 2rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 800;
-    margin-top: 0.5rem;
-    margin-bottom: 2rem;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.timer span {
-    display: inline-block;
-    min-width: 1.2em;
-    text-align: center;
-}
-
-/* Add theme toggle button */
 .theme-toggle {
     position: absolute;
     top: 1rem;
@@ -296,8 +217,8 @@ h1 {
 .theme-toggle .sun-icon,
 .theme-toggle .moon-icon {
     position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     stroke: currentColor;
     stroke-width: 2;
     fill: none;
@@ -318,30 +239,98 @@ h1 {
     opacity: 0;
 }
 
-/* First noise layer */
-.animated-background::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 2048 2048' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.15'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='gamma' amplitude='0.8' exponent='1' offset='0'/%3E%3CfeFuncG type='gamma' amplitude='0.8' exponent='1' offset='0'/%3E%3CfeFuncB type='gamma' amplitude='0.8' exponent='1' offset='0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise1)'/%3E%3C/svg%3E");
-    mix-blend-mode: overlay;
-    opacity: 0.08;
-    pointer-events: none;
+.light-theme {
+    background: var(--gradient-light);
 }
 
-/* Second noise layer */
-.animated-background::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 2048 2048' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.1'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='discrete' tableValues='0 0.2 0.4 0.6 0.8 1'/%3E%3CfeFuncG type='discrete' tableValues='0 0.2 0.4 0.6 0.8 1'/%3E%3CfeFuncB type='discrete' tableValues='0 0.2 0.4 0.6 0.8 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise2)'/%3E%3C/svg%3E");
-    mix-blend-mode: soft-light;
-    opacity: 0.06;
-    pointer-events: none;
+.light-theme .animated-background {
+    background: var(--gradient-light);
+}
+
+/* Responsive typography */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #session-type {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .timer-container {
+        width: 250px;
+        height: 250px;
+        margin: 2rem auto;
+    }
+
+    .timer-display {
+        font-size: 3.5rem;
+    }
+
+    .controls,
+    .time-controls {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .controls button,
+    .time-controls button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+        min-width: 90px;
+    }
+}
+
+/* Even smaller screens */
+@media (max-width: 360px) {
+    .timer-container {
+        width: 220px;
+        height: 220px;
+    }
+
+    .timer-display {
+        font-size: 3rem;
+    }
+
+    .controls button,
+    .time-controls button {
+        padding: 8px 16px;
+        min-width: 80px;
+    }
+}
+
+.footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.footer a:hover {
+    color: #FFA500;
+}
+
+.light-theme .footer {
+    color: rgba(0, 0, 0, 0.7);
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .footer a {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.light-theme .footer a:hover {
+    color: #FF6B00;
 }
